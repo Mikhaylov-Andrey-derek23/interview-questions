@@ -49,4 +49,25 @@ module.exports = function(){
     }).finally(()=>{
         console.log('finish')
     });
+
+    const sleep = (min) => {
+        return new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                if(min%2 === 1){
+                    reject(`Error promise in ${min}`)
+                }else{
+                    resolve(`Promise complite in ${min}`)
+                }
+                
+            }, min )
+        })
+    }
+
+
+    Promise.all([sleep(2000), sleep(2001)]).then(m =>{console.log('Message  promisses')}).catch(e => {console.log(e=> {console.log(e)})})
+    // const s1 = sleep(2000)
+    // s1.then(m => console.log(m)).catch(e => console.log(e))
+    // const s2 = sleep(2001)
+    // s2.then(m => console.log(m)).catch(e => console.log(e))
+
 }()
